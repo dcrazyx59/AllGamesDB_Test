@@ -145,10 +145,112 @@ var $ = class e {
         this.imageID = v,
         this.tempImageNumber = y,
         this.tags = E
+        this.score = (Math.floor(this.positiveVotes / this.votes * (1 - (this.votes + 1) ** -(1 / 3)) *10000))/100;
     }
     hasMetaTag(t) {
         return (this.metaTags & (e.metaTagNames.get(t) ?? 0)) !== 0
     }
+    // Important, have this getUI as a guide to use the classes
+    // 
+    // getUI(t) {
+    //     let n = l("a", {
+    //         className: "game_listing relative"
+    //     });
+    //     n.href = `https://store.steampowered.com/app/${this.appID}/`,
+    //     n.target = "_blank",
+    //     (this.owned || this.wishlisted || this.ignored) && (this.owned ? T("In Library", {
+    //         className: "game_steam_owned",
+    //         parent: n
+    //     }).prepend(l("span", {
+    //         className: "owned_icon"
+    //     })) : this.wishlisted ? T("Wishlisted", {
+    //         className: "game_steam_wishlisted",
+    //         parent: n
+    //     }).prepend(l("span", {
+    //         className: "wishlisted_icon"
+    //     })) : this.ignored && T("Ignored", {
+    //         className: "game_steam_ignored",
+    //         parent: n
+    //     }).prepend(l("span", {
+    //         className: "ignored_icon"
+    //     })));
+    //     let r = l("img", {
+    //         parent: n
+    //     });
+    //     r.src = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${this.appID}/${this.imageID === void 0 ? "" : `${this.imageID}/`}capsule_231x87 ${this.tempImageNumber === -1 ? "" : `_alt_assets_${this.tempImageNumber}`}.jpg`;
+    //     let s = T(t.toString(), {
+    //         className: "game_rank",
+    //         parent: n
+    //     })
+    //       , i = t.toString().length;
+    //     s.style.width = `${Math.max(2, Math.sqrt(2 * i))}rem`,
+    //     s.style.fontSize = `${Math.min(2.25, Math.sqrt(512 / 81 / i))}rem`;
+    //     let d = l("div", {
+    //         className: "game_title_tags",
+    //         parent: n
+    //     });
+    //     T(this.price === 0 ? "Free" : this.price >= 100 ? `${Math.round(this.price)}\u20AC` : `${this.price.toFixed(2)}\u20AC`, {
+    //         className: "game_price",
+    //         parent: d
+    //     }),
+    //     this.hasMetaTag("Adult Only") && T("18+", {
+    //         className: "game_adult",
+    //         parent: d
+    //     }),
+    //     d.appendChild(document.createTextNode(this.name));
+    //     let a = l("div", {
+    //         className: "game_tags",
+    //         parent: d
+    //     });
+    //     this.tags.forEach(o => {
+    //         M(e.tagNames[o], {
+    //             parent: a
+    //         }),
+    //         a.appendChild(document.createTextNode(" "))
+    //     }
+    //     );
+    //     let v = T(`${this.release.getUTCDate()} ${["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][this.release.getUTCMonth()]}, ${this.release.getUTCFullYear()}`, {
+    //         className: "game_release_platforms",
+    //         parent: n
+    //     })
+    //       , y = l("div", {
+    //         className: "game_platforms",
+    //         parent: v
+    //     });
+    //     l("span", {
+    //         className: this.hasMetaTag("Windows") ? "win_icon" : "placeholder_icon",
+    //         parent: y
+    //     }),
+    //     l("span", {
+    //         className: this.hasMetaTag("Mac") ? "mac_icon" : "placeholder_icon",
+    //         parent: y
+    //     }),
+    //     l("span", {
+    //         className: this.hasMetaTag("Linux") ? "linux_icon" : "placeholder_icon",
+    //         parent: y
+    //     }),
+    //     l("span", {
+    //         className: this.hasMetaTag("VR") ? this.hasMetaTag("VR Only") ? "vr_req_icon" : "vr_supp_icon" : "placeholder_icon",
+    //         parent: y
+    //     });
+    //     let E = l("div", {
+    //         className: "game_score_reviews",
+    //         parent: n
+    //     })
+    //       , u = l("div", {
+    //         className: "game_score",
+    //         parent: E
+    //     });
+    //     return M(`${(this.score * 100).toFixed(1)}%`, {
+    //         parent: u
+    //     }),
+    //     u.appendChild(document.createTextNode(` ${this.positiveVotes === this.votes ? 100 : (this.positiveVotes / this.votes * 100).toFixed(1)}%`)),
+    //     T(`${this.votes} reviews`, {
+    //         className: "game_reviews",
+    //         parent: E
+    //     }),
+    //     n
+    // }
 }
 
 Xe().then(data => console.log(data)).catch(err => console.error(err));
