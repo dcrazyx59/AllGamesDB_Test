@@ -1683,5 +1683,4 @@ export const tagNamesVariables = [
     "Snooker",
     420
   ]
-]
-
+];

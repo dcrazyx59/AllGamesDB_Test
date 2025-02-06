@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 let tagNames = ["Action",
 "Casual",
@@ -434,15 +434,19 @@ function createTagnameArray(tagNames){
 async function saveDataToJson() {
     try {
         const data = createTagnameArray(tagNames); // Fetch processed data
+        const jsPath = path.join(process.cwd(), 'tags.js'); // Use process.cwd() for the current working directory
 
-        const jsonPath = path.join(__dirname, 'tags.json'); // Path to save the JSON file
+        console.log(`Saving data to: ${jsPath}`); // Log the path for debugging
 
-        fs.writeFileSync(jsonPath, JSON.stringify(data, null, 2)); // Write JSON data to file
-        console.log(`Data successfully written to ${jsonPath}`);
+        const jsContent = `export const tagNamesVariables = ${JSON.stringify(data, null, 2)};`;
+
+        fs.writeFileSync(jsPath, jsContent); // Write jsdata to file
+        console.log(`Data successfully written to ${jsPath}`);
         
     } catch (error) {
         console.error("Error saving data:", error);
     }
 }
+
 
 saveDataToJson();
