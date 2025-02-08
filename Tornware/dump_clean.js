@@ -119,11 +119,9 @@ class game {
 
 var $ = class e {
     static tagNames
-    static metaTagNames = new Map([["VR", 3], ["VR Only", 2], ["Linux", 4], ["Mac", 8], ["Windows", 16], ["Adult Only", 32], ["Steam Deck Playable", 384], ["Steam Deck Verified", 256], ["Gamepad Preferred", 512], ["Full Controller Support", 1024], ["Steam Input API Support", 2048], ["Remote Play Together", 4096], ["Steam Workshop", 8192], ["Split Screen Co-op", 16384], ["LAN Co-op", 32768], ["Online Co-op", 65536], ["Split Screen PvP", 131072], ["LAN PvP", 262144], ["Online PvP", 524288], ["MMO", 2097152], ["Split Screen Multiplayer", 147456], ["LAN Multiplayer", 294912], ["Online Multiplayer", 2686976], ["Co-op", 114688], ["PvP", 917504], ["Multiplayer", 3129344]]);
+    // static metaTagNames = new Map([["VR", 3], ["VR Only", 2], ["Linux", 4], ["Mac", 8], ["Windows", 16], ["Adult Only", 32], ["Steam Deck Playable", 384], ["Steam Deck Verified", 256], ["Gamepad Preferred", 512], ["Full Controller Support", 1024], ["Steam Input API Support", 2048], ["Remote Play Together", 4096], ["Steam Workshop", 8192], ["Split Screen Co-op", 16384], ["LAN Co-op", 32768], ["Online Co-op", 65536], ["Split Screen PvP", 131072], ["LAN PvP", 262144], ["Online PvP", 524288], ["MMO", 2097152], ["Split Screen Multiplayer", 147456], ["LAN Multiplayer", 294912], ["Online Multiplayer", 2686976], ["Co-op", 114688], ["PvP", 917504], ["Multiplayer", 3129344]]);
     appID;
     name;
-    positiveVotes;
-    votes;
     release;
     price;
     metaTags;
@@ -131,25 +129,23 @@ var $ = class e {
     tempImageNumber;
     tags;
     score = 0;
-    owned = !1;
-    wishlisted = !1;
-    ignored = !1;
+    // owned = !1;
+    // wishlisted = !1;
+    // ignored = !1;
     constructor(t, n, r, s, i, d, a, v, y, E) {
         this.appID = t,
         this.name = n,
-        this.positiveVotes = r,
-        this.votes = s,
         this.release = Ce(i),
         this.price = d * .01,
-        this.metaTags = a,
+        // this.metaTags = a,
         this.imageID = v,
         this.tempImageNumber = y,
         this.tags = E
-        this.score = (Math.floor(this.positiveVotes / this.votes * (1 - (this.votes + 1) ** -(1 / 3)) *10000))/100;
+        this.score = (Math.floor(r / s * (1 - (s + 1) ** -(1 / 3)) *10000))/100;
     }
-    hasMetaTag(t) {
-        return (this.metaTags & (e.metaTagNames.get(t) ?? 0)) !== 0
-    }
+    // hasMetaTag(t) {
+    //     return (this.metaTags & (e.metaTagNames.get(t) ?? 0)) !== 0
+    // }
     // Important, have this getUI as a guide to use the classes
     // 
     // getUI(t) {

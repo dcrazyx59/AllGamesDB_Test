@@ -4,7 +4,8 @@
     "buffer": "^6.0.3",
     "dataview": "^0.0.3",
     "iconv-lite": "^0.6.3",
-    "navigator.locks": "^0.8.6"
+    "navigator.locks": "^0.8.6",
+    "newman": "^6.2.1"
   },
   "type": "module"
 }

@@ -51,8 +51,8 @@ def parse(data):
 def output(all_steam_games):
     gamesdf = pd.concat([pd.DataFrame(g) for g in all_steam_games])
     now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    gamesdf.to_csv(f"gameprices-{now}.csv", index=False)
-    print("Finished saving to CSV")
+    gamesdf.to_json(f"game_scrape_steam-{now}.json", orient="records")
+    print("Finished saving to JSON")
     return
 
 results = []

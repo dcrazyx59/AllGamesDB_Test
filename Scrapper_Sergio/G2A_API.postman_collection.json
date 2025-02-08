@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "3c902a0a-70d6-4962-9da1-f3caa46cba13",
+		"name": "g2a",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40881776"
+	},
+	"item": [
+		{
+			"name": "get g2agames",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function sleep(milliseconds) {\r",
+							"  var start = new Date().getTime();\r",
+							"  for (var i = 0; i < 1e7; i++) {\r",
+							"    if ((new Date().getTime() - start) > milliseconds) {\r",
+							"      break;\r",
+							"    }\r",
+							"  }\r",
+							"}\r",
+							"\r",
+							"let currentPage = parseInt(pm.environment.get(\"page\"));\r",
+							"\r",
+							"// Verifica que currentPage sea un número\r",
+							"if (!isNaN(currentPage)) {\r",
+							"    // Incrementa el valor en 1\r",
+							"    pm.environment.set(\"page\", currentPage + 1);\r",
+							"    console.log(\"Página incrementada a:\", currentPage + 1);\r",
+							"    // Pausa de 2 segundos\r",
+							"    sleep(2000);\r",
+							"} else {\r",
+							"    console.error(\"La variable 'page' no es un número válido\");\r",
+							"    return;\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "YAAQIFUQYGjZNbaUAQAA8ejg2wII/b+CZoLMaoy7V3u1zOuJQinVs+C/Snqc4goUMXOniMsxsVqwBjnfOr7/BH8tZR3wZL6Q0CLL0BAl3mgk46LXS5lVKB4f8SALG4BCBI6gI7xLpgV1T/jQR41pq/pqKYXakWMU0NVIoS/0s0J07V3F7O4c3bENtWzFmCk6AaRogZVBkFZhSPnp2cCC3eqiRE6hmB9AlI1lI9PSny7LxA7u0ytXgS/G0JwGyITltQhu4B5BGyGH9rCmDjd2Oss8z4hjr/J5Zmemm0GNu4ALPwvc+SQukXO7U5S7i/mlU1g/2VMGxP79PrFRWUVOCEURsp7iDCmF30fvXtlbhLG23KQvAXNtupeEaQPvWz8el0QYuoC6zgfhTtQe8UPyN9tPUitRVeW+3nWXfyBNwH6y+RTLFfqgeifjxHS0/Jt+wykPu1irTGma",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,/;q=0.8",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://www.g2a.com/",
+						"type": "text"
+					},
+					{
+						"key": "Upgrade-Insecure-Requests",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://www.g2a.com/search/api/v3/products?itemsPerPage=50&include[0]=filters&include[1]=frodo&currency=EUR&isWholesale=false&category=189&f[platform][0]=1&sort=bestsellers-first&page={{page}}",
+					"protocol": "https",
+					"host": [
+						"www",
+						"g2a",
+						"com"
+					],
+					"path": [
+						"search",
+						"api",
+						"v3",
+						"products"
+					],
+					"query": [
+						{
+							"key": "itemsPerPage",
+							"value": "50"
+						},
+						{
+							"key": "include[0]",
+							"value": "filters"
+						},
+						{
+							"key": "include[1]",
+							"value": "frodo"
+						},
+						{
+							"key": "currency",
+							"value": "EUR"
+						},
+						{
+							"key": "isWholesale",
+							"value": "false"
+						},
+						{
+							"key": "category",
+							"value": "189"
+						},
+						{
+							"key": "f[platform][0]",
+							"value": "1"
+						},
+						{
+							"key": "sort",
+							"value": "bestsellers-first"
+						},
+						{
+							"key": "page",
+							"value": "{{page}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
